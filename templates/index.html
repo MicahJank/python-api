@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+<!-- HEAD -->
+{% block head %}
+<title>Restaurants</title>
+{% endblock %}
+
+<!-- BODY -->
+{% block body%}
+<div class="content">
+   <h1>Find a Restaurant!</h1> 
+   <form action="/" method="GET">
+       <input type="text" name="content" id="content">
+       <input type="submit" value="Search">
+   </form>
+
+   {% for domain in domains %}
+   <p>{{ domain }}</p>
+   {% endfor %}
+</div>
+{% endblock %}
