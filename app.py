@@ -26,7 +26,7 @@ def index():
 
     for post in posts:
         tree = html.fromstring(post['content'])
-        content = tree.xpath('//p/text()')
+        content = tree.xpath('//*/text()')
         if len(content) > 0:
             post['content'] = content[0]
 
