@@ -23,20 +23,28 @@ def index():
 
     posts = response.json()["posts"]
     content = ''
-
+    # the pointe here is that i will just created a whole new list of posts
+    # where each post contains just the information i need
+    # i think this will be less messy than trying to scrape the html off
+    # the posts and then update the original object
+    updated_posts = []
     for post in posts:
+        new_post = {}
+        print(pprint.pprint(post))
         tree = html.fromstring(post['content'])
         content = tree.xpath('//*/text()')
         if len(content) > 0:
-            post['content'] = content[0]
-
-        print(type(content))
-        print(pprint.pprint(post))
+            new_post['content'] = content[0]
+            new_post['title'] = post['title']
+            new_post['url'] = post['url_for_post']
+            new_post['tags'] = post['associated_topics']
+            updated_posts.append(new_post)
+            # post['content'] = content[0]
         
     # print(pprint.pprint(posts))
     # tree = html.fromstring(posts["posts"]["content"])
     # print(tree)
-    return render_template('index.html', posts=posts)
+    return render_template('index.html', posts=updated_posts)
 
 
 

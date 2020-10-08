@@ -2,24 +2,33 @@
 
 <!-- HEAD -->
 {% block head %}
-<title>Restaurants</title>
+<title>Posts</title>
 {% endblock %}
 
 <!-- BODY -->
 {% block body%}
 <div class="content">
-   <h1>Here's some Posts!</h1> 
+    <div class="top">
+        <img src="../static/imgs/logo.png" alt="daily smarty logo" />
+        <h1>DailySmarty API</h1> 
+    </div>
    <!-- <form action="/" method="GET">
        <input type="text" name="content" id="content">
        <input type="submit" value="Search">
    </form> -->
-
-   {% for post in posts %}
-   <div class="post">
-        <h3>{{ post.title }}</h3>
-        {{ post.content }}
-   </div>
-   <p>{{ domain }}</p>
-   {% endfor %}
+   <div class="posts-container">
+        {% for post in posts %}
+        <div class="post">
+                <h3>{{ post.title }}</h3>
+                <div class="tags">
+                    {% for tag in post.tags %}
+                    <h4>{{ tag }}</h4>
+                    {% endfor %}
+                </div>
+                <p>{{ post.content }}</p>
+                <a href="{{ post.url }}">Go to post</a>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
