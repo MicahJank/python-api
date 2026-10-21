@@ -11,7 +11,7 @@ url = "https://api.dailysmarty.com/posts"
 # querystring = {"location":"de","registrar":"dnsimple.com","defaults":"club%2Ccoffee","query":"acme cafe"}
 
 # headers = {
-#     'X-API-KEY': "10B30A17-B65D468A-913ABEED-7E36BEB8",
+#     'X-API-KEY': '<set a new key from your environment>',
 #     'Accept': 'application/json',
 # 	'Cache-Control': 'no-cache'
 #     }
